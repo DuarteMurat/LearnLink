@@ -3,45 +3,145 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LearnLink</title>
+    <link rel="shortcut icon" type="image/ico" href="~/images/favicon.ico">
+    <title>@ViewData["Title"] &nbsp|&nbsp LearnLink</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm fixed-top navbar-dark border-bottom box-shadow mb-3 py-4" style="background-color: #0D98BA;">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LearnLink</a>
+                <a class="navbar-brand text-nowrap" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i style="font-size:30px" class="fa">Learnlink</i>
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Courses" asp-action="AdminIndexCourses">Courses</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Disciplines" asp-action="AdminIndexDisciplines">Disciplines</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="RegisterUser">New</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="EditUsers">Edit</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Reports" asp-action="AdminIndexReports">Reports</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Configurations">Config</a>
+                            </li>
+                        }
+
+                        @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Staff"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="CourseDisciplines" asp-action="StaffIndexCourses">Courses</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Classes" asp-action="StaffIndexClasses">Classes</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="RegisterStudent">New</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="EditStudents">Edit</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Absences" asp-action="RegisterAbsenceClasses">Absences</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Evaluations" asp-action="StaffIndexEvaluations">Evaluations</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Reports" asp-action="StaffIndexReports">Reports</a>
+                            </li>
+                        }
+
+                        @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Student"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">School</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Evaluations" asp-action="StudentEvaluationsCourses" asp-route-userName="@this.User.Identity.Name">Evaluations</a></li>
+                                </ul>
+                            </li>
+                        }
+
+                        @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin") || this.User.Identity.IsAuthenticated && this.User.IsInRole("Staff"))
+                        {
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        }
+
                     </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="Users" asp-action="EditOwnProfile">
+                                    <img src="@Url.Content(TempData.Peek("SessionUserProfilePicture").ToString())" alt="Image" class="rounded-circle" style="vertical-align: middle; width: 44px; height: 44px;" />
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" asp-area="" asp-controller="Users" asp-action="EditOwnProfile">@TempData.Peek("SessionUserFirstName").ToString()</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Accounts" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Accounts" asp-action="Login">Login</a>
+                            </li>
+                        }
+                    </ul>
+
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <br>
+            <br>
+            <br>
+            <br>
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted small">
         <div class="container">
-            &copy; 2023 - LearnLink - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <i style="font-size:16px" class="fa">LearnLink</i> &nbsp&nbsp|&nbsp&nbsp &copy; 2023 Duarte Marques
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

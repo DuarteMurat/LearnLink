@@ -1,8 +1,134 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model LearnLink.Models.Home.HomeCoursesClassesViewModel
+@{
+    ViewData["Title"] = "Home";
+    <style type="text/css" media="screen">
+        .table-hover tbody tr:hover td {
+            background-color: #f5f3e3;
+        }
+    </style>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<br>
+<div>
+    <img src="~/images/banner-welcome.jpg" alt="Image" class="embed-responsive" />
 </div>
+<br>
+<br>
+<div class="col-md-12">
+    <p>
+        Our courses are an excellent choice to help advance your career. Whether you are seeking professional development, new skills, or a new career. These courses can help you become a more competitive and valuable employee with important skills.
+    </p>
+</div>
+<br>
+<div>
+    <img src="~/images/banner-courses.jpg" alt="Image" class="embed-responsive" />
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <table class="table table-hover table-responsive table-borderless" id="HomeCourses">
+                    <thead>
+                        <tr>
+                            <th>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().Area)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().Duration)
+                            </th>
+                            <th>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Courses != null)
+                        {
+                            @foreach (var item in Model.Courses)
+                            {
+                                <tr style="user-select: none;">
+                                    <td class="align-middle font-weight-bold h5">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.Area)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.Duration)
+                                    </td>
+                                    <td class="align-middle">
+                                        <input type="hidden" asp-for="@item.Id" />
+                                        <a asp-action="HomeCourseDisciplines" asp-route-id="@item.Id" class="btn btn-secondary">Disciplines</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="col-md-12">
+    <p>
+        Classes range from a week to a year and can offer certification or diplomas. If you are considering taking our courses, then scroll through the classes to find one that will help you meet your professional goals and advance your career!
+    </p>
+</div>
+<br>
+<div>
+    <img src="~/images/banner-classes.jpg" alt="Image" class="embed-responsive" />
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <table class="table table-hover table-responsive table-borderless" id="HomeCourses">
+                    <thead>
+                        <tr>
+                            <th>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Classes.FirstOrDefault().Course)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Classes.FirstOrDefault().StartDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Classes.FirstOrDefault().EndDate)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Classes != null)
+                        {
+                            @foreach (var item in Model.Classes)
+                            {
+                                <tr style="user-select: none;">
+                                    <td class="align-middle font-weight-bold h5">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.Course)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.StartDate)
+                                    </td>
+                                    <td class="align-middle">
+                                        @Html.DisplayFor(modelItem => item.EndDate)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
