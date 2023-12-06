@@ -116,8 +116,8 @@ namespace LearnLink.Data
             {
                 var configuration = new Configuration
                 {
-                    ClassMaxStudents = 30,
-                    MaxPercentageAbsence = 5
+                    ClassMaxStudents = 35,
+                    MaxPercentageAbsence = 7
                 };
 
                 await _context.Configurations.AddAsync(configuration);
@@ -162,13 +162,13 @@ namespace LearnLink.Data
                 userStaff = new User
                 {
                     UserName = "staff@gmail.com",
-                    FirstName = "Karen",
-                    LastName = "Gillan",
+                    FirstName = "Catarina",
+                    LastName = "Furtado",
                     GenderId = _context.Genders.Where(x => x.Name == "Female").FirstOrDefault().Id,
-                    QualificationId = _context.Qualifications.Where(x => x.Name == "Level 5").FirstOrDefault().Id,
+                    QualificationId = _context.Qualifications.Where(x => x.Name == "Level 6").FirstOrDefault().Id,
                     CcNumber = "4567890123",
                     BirthDate = DateTime.Today.AddYears(-30),
-                    Address = "Dark Alley, 9",
+                    Address = "Foz do Douro,10",
                     City = "Porto",
                     PhoneNumber = "+351987654321",
                     Email = "staff@gmail.com",
@@ -197,13 +197,13 @@ namespace LearnLink.Data
                 userStudent = new User
                 {
                     UserName = "student1@gmail.com",
-                    FirstName = "Frankie",
-                    LastName = "Muniz",
+                    FirstName = "Dario",
+                    LastName = "Diaz",
                     GenderId = _context.Genders.Where(x => x.Name == "Not Specified").FirstOrDefault().Id,
                     QualificationId = _context.Qualifications.Where(x => x.Name == "Entry Level").FirstOrDefault().Id,
                     CcNumber = "7890123456",
                     BirthDate = DateTime.Today.AddYears(-20),
-                    Address = "Sunshine Street, 1",
+                    Address = "Rua do Ouro, 19",
                     City = "Lisbon",
                     PhoneNumber = "+351210789123",
                     Email = "student1@gmail.com",
@@ -226,12 +226,12 @@ namespace LearnLink.Data
                 {
                     UserName = "student2@gmail.com",
                     FirstName = "John",
-                    LastName = "Cortez",
+                    LastName = "Murphy",
                     GenderId = _context.Genders.Where(x => x.Name == "Male").FirstOrDefault().Id,
                     QualificationId = _context.Qualifications.Where(x => x.Name == "Level 3").FirstOrDefault().Id,
                     CcNumber = "6860123456",
                     BirthDate = DateTime.Today.AddYears(-25),
-                    Address = "Moon Street, 8",
+                    Address = "Rua da Constituicao, 59",
                     City = "Porto",
                     PhoneNumber = "+351658789123",
                     Email = "student2@gmail.com",
@@ -253,13 +253,13 @@ namespace LearnLink.Data
                 userStudent = new User
                 {
                     UserName = "student3@gmail.com",
-                    FirstName = "Marie",
-                    LastName = "Curie",
+                    FirstName = "Raquel",
+                    LastName = "Henriques",
                     GenderId = _context.Genders.Where(x => x.Name == "Female").FirstOrDefault().Id,
                     QualificationId = _context.Qualifications.Where(x => x.Name == "Level 4").FirstOrDefault().Id,
                     CcNumber = "6777123456",
                     BirthDate = DateTime.Today.AddYears(-22),
-                    Address = "Moon Street, 18",
+                    Address = "Rua do Outeiro, 2",
                     City = "Faro",
                     PhoneNumber = "+351658789777",
                     Email = "student3@gmail.com",
@@ -308,7 +308,7 @@ namespace LearnLink.Data
                     Report report1 = new Report
                     {
                         UserId = userStaff.Id,
-                        Title = "Add Software Engineering Discipline",
+                        Title = "Add Sql Server Discipline",
                         Message = "Please add this discipline as soon as possible. Thank you.",
                         Date = DateTime.Today.AddDays(-6),
                         Solved = true,
@@ -318,7 +318,7 @@ namespace LearnLink.Data
                     Report report2 = new Report
                     {
                         UserId = userStaff.Id,
-                        Title = "Add .NET Programming Course",
+                        Title = "Add Python Course",
                         Message = "Please add this course as soon as possible. Thank you.",
                         Date = DateTime.Today.AddDays(-4),
                         Solved = false
@@ -327,8 +327,8 @@ namespace LearnLink.Data
                     Report report3 = new Report
                     {
                         UserId = userStaff.Id,
-                        Title = "Bug When Adding Evaluation",
-                        Message = "When adding negative evaluations the program stops responding. Please help.",
+                        Title = "Bug When Changing User",
+                        Message = "When changing users it logs into the older one. Please help.",
                         Date = DateTime.Today.AddDays(-2),
                         Solved = false
                     };
@@ -346,26 +346,26 @@ namespace LearnLink.Data
             {
                 Course course1 = new Course
                 {
-                    Code = "WEBTECH",
-                    Name = "Web Development And Technologies",
-                    Area = "Web Development",
-                    Duration = 1150
+                    Code = "PROALGO",
+                    Name = "Programming Algorithms",
+                    Area = "Forms Development",
+                    Duration = 250
                 };
 
                 Course course2 = new Course
                 {
-                    Code = "BUSTECH",
-                    Name = "Business Technology Management",
-                    Area = "Business Technology",
-                    Duration = 950
+                    Code = "IISTIL",
+                    Name = "Integration of information systems – technologies and integration levels",
+                    Area = "Programming",
+                    Duration = 600
                 };
 
                 Course course3 = new Course
                 {
-                    Code = "TECLEAD",
-                    Name = "Technology Leadership And Entrepreneurship",
-                    Area = "Business Technology",
-                    Duration = 675
+                    Code = "MATIS",
+                    Name = "Mobile access to information systems",
+                    Area = "Mobile Development",
+                    Duration = 350
                 };
 
                 await _courseRepository.CreateAsync(course1);
@@ -380,18 +380,18 @@ namespace LearnLink.Data
             {
                 Discipline discipline1 = new Discipline
                 {
-                    Code = "NETMVCC",
-                    Name = ".NET MVC Core Development",
+                    Code = "ANETCMVCD",
+                    Name = "ASP.NET Core Web App MVC Development",
                     Area = "Web Development",
-                    Duration = 200
+                    Duration = 400
                 };
 
                 Discipline discipline2 = new Discipline
                 {
-                    Code = "FRNTEND",
-                    Name = "Front End Development",
-                    Area = "Web Development",
-                    Duration = 150
+                    Code = "HAJD",
+                    Name = "HTML and JavaScript Development",
+                    Area = "Frontend Development",
+                    Duration = 300
                 };
 
                 Discipline discipline3 = new Discipline
@@ -412,11 +412,11 @@ namespace LearnLink.Data
         {
             if (await _courseDisciplineRepository.IsCourseDisciplinesEmptyAsync())
             {
-                var course1 = await _courseRepository.GetByCodeAsync("WEBTECH");
-                var course2 = await _courseRepository.GetByCodeAsync("BUSTECH");
+                var course1 = await _courseRepository.GetByCodeAsync("IISTIL");
+                var course2 = await _courseRepository.GetByCodeAsync("MATIS");
 
-                var discicline1 = await _disciplineRepository.GetByCodeAsync("NETMVCC");
-                var discicline2 = await _disciplineRepository.GetByCodeAsync("FRNTEND");
+                var discicline1 = await _disciplineRepository.GetByCodeAsync("ANETCMVCD");
+                var discicline2 = await _disciplineRepository.GetByCodeAsync("HAJD");
                 var discicline3 = await _disciplineRepository.GetByCodeAsync("DATASEC");
 
                 if (course1 != null && discicline1 != null)
@@ -458,9 +458,9 @@ namespace LearnLink.Data
         {
             if (await _classRepository.IsClassesEmptyAsync())
             {
-                var course1 = await _courseRepository.GetByCodeAsync("WEBTECH");
-                var course2 = await _courseRepository.GetByCodeAsync("BUSTECH");
-                var course3 = await _courseRepository.GetByCodeAsync("TECLEAD");
+                var course1 = await _courseRepository.GetByCodeAsync("PROALGO");
+                var course2 = await _courseRepository.GetByCodeAsync("HAJD");
+                var course3 = await _courseRepository.GetByCodeAsync("DATASEC");
 
                 if (course1 != null)
                 {
@@ -558,7 +558,7 @@ namespace LearnLink.Data
             {
                 var userStudent1 = await _userHelper.GetUserByEmailAsync("student1@gmail.com");
                 var class1 = await _classRepository.GetByCodeAsync("TCD003");
-                var discicline1 = await _disciplineRepository.GetByCodeAsync("NETMVCC");
+                var discicline1 = await _disciplineRepository.GetByCodeAsync("ANETCMVCD");
 
                 if (userStudent1 != null && class1 != null && discicline1 != null)
                 {
@@ -593,8 +593,8 @@ namespace LearnLink.Data
             {
                 var userStudent1 = await _userHelper.GetUserByEmailAsync("student1@gmail.com");
                 var class1 = await _classRepository.GetByCodeAsync("TCD003");
-                var discicline1 = await _disciplineRepository.GetByCodeAsync("NETMVCC");
-                var discicline2 = await _disciplineRepository.GetByCodeAsync("FRNTEND");
+                var discicline1 = await _disciplineRepository.GetByCodeAsync("ANETCMVCD");
+                var discicline2 = await _disciplineRepository.GetByCodeAsync("HAJD");
 
                 if (userStudent1 != null && class1 != null && discicline1 != null && discicline2 != null)
                 {

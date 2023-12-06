@@ -28,12 +28,6 @@
                                 @Html.DisplayNameFor(model => model.Disciplines.FirstOrDefault().Duration)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Disciplines.FirstOrDefault().HoursAbsence)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Disciplines.FirstOrDefault().PercentageAbsence)
-                            </th>
-                            <th>
                                 @Html.DisplayNameFor(model => model.Disciplines.FirstOrDefault().Date)
                             </th>
                             <th>
@@ -55,21 +49,6 @@
                                     </td>
                                     <td class="align-middle">
                                         @Html.DisplayFor(modelItem => item.Duration)
-                                    </td>
-                                    <td class="align-middle">
-                                        @Html.DisplayFor(modelItem => item.HoursAbsence)
-                                    </td>
-                                    <td class="align-middle font-weight-bold">
-                                        @if (item.FailedAbsence == true)
-                                        {
-                                            <span style="color: darkred;">
-                                                @Html.DisplayFor(modelItem => item.PercentageAbsence)<span>%</span>
-                                            </span>
-                                        }
-                                        else
-                                        {
-                                            @Html.DisplayFor(modelItem => item.PercentageAbsence)<span>%</span>
-                                        }
                                     </td>
                                     <td class="align-middle">
                                         @Html.DisplayFor(modelItem => item.Date)
