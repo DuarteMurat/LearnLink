@@ -47,9 +47,9 @@ namespace LearnLink.Models
         public string CcNumber { get; set; }
 
 
+        [DataType(DataType.Date)]
         [Display(Name = "Birth Date")]
         [Required(ErrorMessage = "{0} is required")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime BirthDate { get; set; }
 
 
