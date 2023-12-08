@@ -72,3 +72,17 @@ body {
     white-space: nowrap;
     line-height: 60px; /* Vertically center the text there */
 }
+
+input[type=file]::file-selector-button {
+    border: 2px solid #904596;
+    padding: .2em .4em;
+    border-radius: .2em;
+    background-color: #904596;
+    transition: 1s;
+    color:white;
+}
+
+    input[type=file]::file-selector-button:hover {
+        background-color: #b847c1;
+        border: 2px solid #b847c1;
+    }

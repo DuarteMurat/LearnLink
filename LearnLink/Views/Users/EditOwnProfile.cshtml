@@ -4,8 +4,6 @@
 }
 
 <br>
-<br>
-<h3 class="text-center">Edit Profile</h3>
 <div class="text-success text-center">
     <p>
         @Html.Raw(ViewBag.Message)
@@ -25,8 +23,8 @@
                             </div>
                             <br>
                             <div class="row justify-content-center">
-                                <div class="form-group align-self-baseline">
-                                    <input asp-for="ProfilePictureFile" class="form-control" type="file" accept="image/*" style="color: transparent;" />
+                                <div class="form-group text-center" style="padding-left: 70px">
+                                    <input asp-for="ProfilePictureFile" type="file" accept="image/*" />
                                     <span asp-validation-for="ProfilePictureFile" class="text-danger small"></span>
                                 </div>
                             </div>
@@ -107,7 +105,7 @@
                     {
                         <div class="form-group col-md-4">
                             <label asp-for="PictureFile" class="control-label"></label>
-                            <input asp-for="PictureFile" class="form-control" type="file" accept="image/*" />
+                            <input asp-for="PictureFile" type="file" accept="image/*" />
                             <span asp-validation-for="PictureFile" class="text-danger small"></span>
                         </div>
                     }
@@ -127,9 +125,9 @@
             }
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 offset-md-2">
+                    <div class="col-md-5 offset-md-1">
                         <div class="form-group text-center">
-                            <input type="submit" value="Save" class="btn btn-secondary" />
+                            <input type="submit" value="Save" class="btn btn-success" />
                         </div>
                         <div class="col-md-8 offset-md-2 nav-item text-center">
                             <a asp-controller="Accounts" asp-action="ChangePassword" class="nav-link text-dark">Change Password</a>

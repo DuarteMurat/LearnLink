@@ -36,12 +36,8 @@
                                     <li><a class="dropdown-item" asp-area="" asp-controller="Disciplines" asp-action="AdminIndexDisciplines">Disciplines</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white"><i class="fas fa-users"></i> Users</a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="RegisterUser">New</a></li>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Users" asp-action="EditUsers">Edit</a></li>
-                                </ul>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Users" asp-action="EditUsers"><i class="fas fa-users"></i> Users</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Reports" asp-action="AdminIndexReports"><i class="far fa-file-alt"></i> Reports</a>
